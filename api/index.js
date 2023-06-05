@@ -1,32 +1,16 @@
-const express = require('express')
-const twilio = require('twilio')
-const app = express()
+const app = require('express')()
+const { v4 } = require('uuid')
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!')
+app.get('/api', (req, res) => {
+  const path = `/api/item/${v4()}`
+  res.setHeader('Content-Type', 'text/html')
+  res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+  res.end(`Hello! Go to item: <a href="${path}">${path}</a>`)
 })
 
-app.get('/answer/', (req, res) => {
-  res.send('API endpoint')
-})
-
-app.get('/answer/', (req, res) => {
-  res.send('Hello, Answer!')
-})
-
-app.post('/answer/', (req, res) => {
-  const twiml = new twilio.twiml.VoiceResponse()
-
-  twiml.say('Hello! Welcome to NoGigiddy. How can I help you?')
-
-  res.type('text/xml')
-  res.send(twiml.toString())
-})
-
-app.all('/incoming', (req, res) => {
-  console.log(`Incoming request method: ${req.method}`)
-  console.log(`Incoming request path: ${req.path}`)
-  res.send('Received the request')
+app.get('/api/item/:slug', (req, res) => {
+  const { slug } = req.params
+  res.end(`Item: ${slug}`)
 })
 
 module.exports = app
