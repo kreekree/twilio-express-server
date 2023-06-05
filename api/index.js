@@ -12,7 +12,12 @@ app.get('/api', (req, res) => {
 app.post('/api/answer', (req, res) => {
   const twiml = new twilio.twiml.VoiceResponse()
 
-  twiml.say('Hello! Welcome to NoGigiddy. How can I help you?')
+  twiml.say(
+    {
+      voice: 'Polly.Joanna-Neural',
+    },
+    'Hey! Welcome to NoGigiddy! How can I help you.'
+  )
 
   res.type('text/xml')
   res.send(twiml.toString())
