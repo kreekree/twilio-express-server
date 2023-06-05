@@ -1,7 +1,7 @@
 const app = require('express')()
 const { v4 } = require('uuid')
 
-app.get('/', (req, res) => {
+app.get('/cool', (req, res) => {
   res.send('Hello, world!')
 })
 
