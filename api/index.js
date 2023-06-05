@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
+app.get('/api/', (req, res) => {
+  res.send('API endpoint')
+})
+
 app.post('/answer', (req, res) => {
   const twiml = new twilio.twiml.VoiceResponse()
 
