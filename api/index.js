@@ -12,10 +12,6 @@ app.get('/api', (req, res) => {
   res.end(`Hello! Go to item: <a href="${path}">${path}</a>`)
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!')
-})
-
 app.get('/api/item/:slug', (req, res) => {
   const { slug } = req.params
   res.end(`Item: ${slug}`)
