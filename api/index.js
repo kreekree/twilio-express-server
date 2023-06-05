@@ -10,11 +10,11 @@ app.get('/api/', (req, res) => {
   res.send('API endpoint')
 })
 
-app.get('/api/answer/', (req, res) => {
+app.get('/answer/', (req, res) => {
   res.send('Hello, Answer!')
 })
 
-app.post('/api/answer/', (req, res) => {
+app.post('/answer/', (req, res) => {
   const twiml = new twilio.twiml.VoiceResponse()
 
   twiml.say('Hello! Welcome to NoGigiddy. How can I help you?')
