@@ -15,4 +15,10 @@ app.post('/answer', (req, res) => {
   res.send(twiml.toString())
 })
 
+app.all('/incoming', (req, res) => {
+  console.log(`Incoming request method: ${req.method}`)
+  console.log(`Incoming request path: ${req.path}`)
+  res.send('Received the request')
+})
+
 module.exports = app
